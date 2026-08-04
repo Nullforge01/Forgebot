@@ -1,8 +1,8 @@
 {
   "platform": "instagram",
   "bot_account": {
-    "username": "your_bot_username",
-    "password": "your_bot_password"
+    "username": "Forgebot",
+    "password": "nullforge123"
   },
   "target": "account_to_boost",
   "daily_views": 100,
