@@ -1,0 +1,15 @@
+{
+  "platform": "instagram",
+  "bot_account": {
+    "username": "your_bot_username",
+    "password": "your_bot_password"
+  },
+  "target": "account_to_boost",
+  "daily_views": 100,
+  "views_per_session": 10,
+  "delay_range": [60, 300],
+  "proxy": null,
+  "headless": false,
+  "like_chance": 0.3,
+  "scroll_chance": 0.2
+}
