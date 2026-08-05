@@ -53,7 +53,7 @@ async def human_delay(delay_range):
     delay = random.randint(min_delay, max_delay)
     
     # Add some variation
-    if random.random() < 0.1:  # 10% chance of extra long delay
+    if random.random() < 0.1:
         delay = delay * 2
     
     logger.info(f"⏳ Waiting {delay} seconds...")
