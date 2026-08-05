@@ -1,15 +1,15 @@
 {
   "platform": "instagram",
   "bot_account": {
-    "username": "Forgebot",
-    "password": "nullforge123"
+    "username": "",
+    "password": ""
   },
-  "target": "account_to_boost",
+  "target": "",
   "daily_views": 100,
   "views_per_session": 10,
-  "delay_range": [60, 300],
+  "delay_range": [30, 120],
   "proxy": null,
-  "headless": false,
+  "headless": true,
   "like_chance": 0.3,
   "scroll_chance": 0.2
 }
