@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 ForgeBot - Social Media Boosting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 480px;
+            width: 100%;
+            background: #14141e;
+            border-radius: 24px;
+            padding: 30px 24px;
+            border: 1px solid #2a2a3a;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            color: #8888aa;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #aaaacc;
+            margin-bottom: 6px;
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #1e1e2e;
+            border: 1px solid #2a2a3a;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #f7971e;
+        }
+        
+        .form-group select option {
+            background: #1e1e2e;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a0a0f;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            margin-top: 8px;
+        }
+        
+        .btn:active {
+            transform: scale(0.97);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: #1e1e2e;
+            color: #ffffff;
+            border: 1px solid #2a2a3a;
+            margin-top: 8px;
+        }
+        
+        .status-box {
+            background: #1a1a2a;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            border: 1px solid #2a2a3a;
+        }
+        
+        .status-box h3 {
+            font-size: 13px;
+            color: #8888aa;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-box .status-text {
+            font-size: 14px;
+            color: #aaccff;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+        
+        .status-box .status-text .success {
+            color: #4ade80;
+        }
+        
+        .status-box .status-text .error {
+            color: #f87171;
+        }
+        
+        .progress-container {
+            margin-top: 16px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #1e1e2e;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        
+        .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #8888aa;
+            margin-top: 4px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .stat-card {
+            background: #1a1a2a;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #2a2a3a;
+        }
+        
+        .stat-card .number {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        
+        .stat-card .label {
+            font-size: 10px;
+            color: #666688;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #444466;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 16px;
+            }
+            .header h1 {
+                font-size: 26px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 ForgeBot</h1>
+            <p>Automated Social Media Boosting</p>
+        </div>
+        
+        <form id="botForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Platform</label>
+                    <select id="platform" required>
+                        <option value="instagram">📸 Instagram</option>
+                        <option value="tiktok">🎵 TikTok</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Views</label>
+                    <input type="number" id="views" value="100" min="10" max="500" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Target Username</label>
+                <input type="text" id="target" placeholder="e.g. john_doe" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Bot Account Username</label>
+                <input type="text" id="botUsername" placeholder="Your bot account username" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Bot Account Password</label>
+                <input type="password" id="botPassword" placeholder="Your bot account password" required>
+            </div>
+            
+            <button type="submit" class="btn" id="startBtn">🚀 Start Boosting</button>
+            <button type="button" class="btn btn-secondary" id="stopBtn">⏹️ Stop Bot</button>
+        </form>
+        
+        <div class="status-box">
+            <h3>📊 Live Status</h3>
+            <div id="statusText" class="status-text">Waiting to start...</div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressLabel">0%</span>
+                    <span id="viewsLabel">0 / 0 views</span>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number" id="statPlatform">-</div>
+                    <div class="label">Platform</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="statViews">0</div>
+                    <div class="label">Views Given</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="statStatus">⏳</div>
+                    <div class="label">Status</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            ForgeBot v1.0 • Built with 🔨
+        </div>
+    </div>
+    
+    <script>
+        const form = document.getElementById('botForm');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const statusText = document.getElementById('statusText');
+        const progressFill = document.getElementById('progressFill');
+        const progressLabel = document.getElementById('progressLabel');
+        const viewsLabel = document.getElementById('viewsLabel');
+        const statPlatform = document.getElementById('statPlatform');
+        const statViews = document.getElementById('statViews');
+        const statStatus = document.getElementById('statStatus');
+        
+        let statusInterval = null;
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const data = {
+                platform: document.getElementById('platform').value,
+                target: document.getElementById('target').value,
+                views: parseInt(document.getElementById('views').value),
+                bot_username: document.getElementById('botUsername').value,
+                bot_password: document.getElementById('botPassword').value
+            };
+            
+            startBtn.disabled = true;
+            startBtn.textContent = '⏳ Starting...';
+            statusText.textContent = '⏳ Starting bot...';
+            
+            try {
+                const response = await fetch('/api/start', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    statusText.innerHTML = `<span class="error">❌ ${result.error}</span>`;
+                    startBtn.disabled = false;
+                    startBtn.textContent = '🚀 Start Boosting';
+                    return;
+                }
+                
+                statusText.innerHTML = `<span class="success">✅ ${result.message}</span>`;
+                statPlatform.textContent = data.platform;
+                statStatus.textContent = '🟢 Running';
+                
+                if (statusInterval) clearInterval(statusInterval);
+                statusInterval = setInterval(fetchStatus, 3000);
+                
+                startBtn.textContent = '✅ Running...';
+                
+            } catch (error) {
+                statusText.innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+                startBtn.disabled = false;
+                startBtn.textContent = '🚀 Start Boosting';
+            }
+        });
+        
+        stopBtn.addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/stop', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const result = await response.json();
+                statusText.innerHTML = `<span class="error">🛑 ${result.message}</span>`;
+                statStatus.textContent = '🔴 Stopped';
+                startBtn.disabled = false;
+                startBtn.textContent = '🚀 Start Boosting';
+                if (statusInterval) clearInterval(statusInterval);
+            } catch (error) {
+                statusText.innerHTML = `<span class="error">❌ Error stopping: ${error.message}</span>`;
+            }
+        });
+        
+        async function fetchStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                
+                const viewsGiven = extractViews(data.last_activity);
+                const totalViews = data.daily_views || 100;
+                const progress = totalViews > 0 ? (viewsGiven / totalViews) * 100 : 0;
+                
+                progressFill.style.width = Math.min(progress, 100) + '%';
+                progressLabel.textContent = Math.min(progress, 100).toFixed(0) + '%';
+                viewsLabel.textContent = `${viewsGiven} / ${totalViews} views`;
+                statViews.textContent = viewsGiven;
+                
+                const lastLine = data.last_activity.split('\n').filter(l => l.trim()).pop() || 'Waiting...';
+                statusText.textContent = lastLine;
+                
+            } catch (error) {
+                console.error('Status fetch error:', error);
+            }
+        }
+        
+        function extractViews(text) {
+            if (!text) return 0;
+            const match = text.match(/View #(\d+)/);
+            if (match) return parseInt(match[1]);
+            const totalMatch = text.match(/Total views given: (\d+)/);
+            if (totalMatch) return parseInt(totalMatch[1]);
+            return 0;
+        }
+        
+        fetchStatus();
+        statusInterval = setInterval(fetchStatus, 10000);
+    </script>
+</body>
+</html>
