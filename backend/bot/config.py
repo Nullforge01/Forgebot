@@ -15,8 +15,8 @@ class Config:
         """Initialize config loader"""
         
         if config_path is None:
-            # Look for config.json in parent directory
-            self.config_path = Path(__file__).parent.parent / "config.json"
+            # Look for config.json in parent directory (two levels up from this file)
+            self.config_path = Path(__file__).parent.parent.parent / "config.json"
         else:
             self.config_path = Path(config_path)
         
